@@ -1,5 +1,5 @@
 import { Telegraf, Markup } from 'telegraf'
-import { Category } from '@prisma/client'
+import { Category, Prisma } from '@prisma/client'
 import { prisma } from '../lib/prisma'
 
 const ADMIN_IDS = (process.env.ADMIN_TELEGRAM_ID ?? '')
@@ -29,8 +29,8 @@ async function updateSession(
 ) {
   return prisma.adminSession.upsert({
     where: { telegramId },
-    update: { step, ...(data !== undefined && { data }) },
-    create: { telegramId, step, data: data ?? {} },
+    update: { step, ...(data !== undefined && { data: data as Prisma.InputJsonValue }) },
+    create: { telegramId, step, data: (data ?? {}) as Prisma.InputJsonValue },
   })
 }
 
