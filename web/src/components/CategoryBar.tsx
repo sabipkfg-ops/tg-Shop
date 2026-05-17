@@ -1,21 +1,21 @@
 'use client'
-
+ 
 import { Category } from '@/types'
-import { Lang, t } from '@/i18n'
+import { Lang } from '@/types'
+import { t } from '@/i18n'
+
 
 type CatOption = Category | 'ALL'
-
+ 
 const CATEGORIES: CatOption[] = ['ALL', 'PANTS', 'BAGS', 'JACKETS', 'HOODIES']
-
+ 
 interface Props {
   active: CatOption
   lang: Lang
   onFiltersClick: () => void
   onCategoryChange: (cat: CatOption) => void
 }
-
-
-
+ 
 function catLabel(lang: Lang, cat: CatOption): string {
   const map: Record<CatOption, string> = {
     ALL: t(lang, 'all'),
@@ -26,7 +26,7 @@ function catLabel(lang: Lang, cat: CatOption): string {
   }
   return map[cat]
 }
-
+ 
 export function CategoryBar({ active, lang, onFiltersClick, onCategoryChange }: Props) {
   return (
     <div className="flex items-center gap-0 border-b border-border bg-bg-2 overflow-x-auto no-scrollbar">
@@ -37,7 +37,7 @@ export function CategoryBar({ active, lang, onFiltersClick, onCategoryChange }: 
       >
         ⊞ {t(lang, 'filters')}
       </button>
-
+ 
       {/* Category chips */}
       {CATEGORIES.map((cat) => (
         <button
