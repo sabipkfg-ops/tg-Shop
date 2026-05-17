@@ -1,9 +1,8 @@
-export type Category = 'PANTS' | 'BAGS' | 'JACKETS' | 'HOODIES'
+export type Category = 'PANTS' | 'BAGS' | 'JACKETS' | 'HOODIES' | 'TEES'
 
 export interface Product {
   id: number
-  nameRu: string
-  nameEn: string
+  name: string
   price: number
   photoUrl: string
   category: Category
