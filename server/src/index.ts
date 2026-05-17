@@ -21,7 +21,7 @@ app.get('/health', (_, res) => res.json({ ok: true }))
 const bot = createBot()
 
 if (process.env.NODE_ENV === 'production') {
-  const webhookUrl = `${process.env.FRONTEND_URL}/bot`
+const webhookUrl = `${process.env.SERVER_URL}/bot`
   app.use('/bot', express.json(), (req, res) => {
     bot.handleUpdate(req.body, res)
   })
