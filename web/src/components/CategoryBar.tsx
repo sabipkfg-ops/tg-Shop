@@ -14,7 +14,7 @@ interface Props {
   onCategoryChange: (cat: CatOption) => void
 }
 
-const CAT_LABEL: Record<CatOption, keyof ReturnType<typeof import('@/i18n')['t'] extends (...args: infer _) => infer R ? never : never>> = {} as any
+
 
 function catLabel(lang: Lang, cat: CatOption): string {
   const map: Record<CatOption, string> = {
