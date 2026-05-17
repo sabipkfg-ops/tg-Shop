@@ -38,13 +38,13 @@ export const useFavoritesStore = create<FavoritesStore>((set, get) => ({
     // Optimistic update
     if (isFav) {
       set({
-        ids: new Set([...ids].filter((id) => id !== product.id)),
+        ids: new Set(Array.from(ids).filter((id) => id !== product.id)),
         favorites: favorites.filter((p) => p.id !== product.id),
       })
       await removeFavorite(telegramId, product.id)
     } else {
       set({
-        ids: new Set([...ids, product.id]),
+        ids: new Set(Array.from(ids).concat(product.id)),
         favorites: [product, ...favorites],
       })
       await addFavorite(telegramId, product.id)
