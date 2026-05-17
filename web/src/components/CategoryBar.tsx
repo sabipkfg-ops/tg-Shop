@@ -1,7 +1,6 @@
 'use client'
  
-import { Category } from '@/types'
-import { Lang } from '@/types'
+import { Category, Lang } from '@/types'
 import { t } from '@/i18n'
 
 
