@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { Filters, SortOrder } from '@/types'
-import { Lang, t } from '@/i18n'
+import { Filters, SortOrder, Lang} from '@/types'
+import { t } from '@/i18n'
 
 interface Props {
   initial: Filters
