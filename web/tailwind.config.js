@@ -4,21 +4,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        bg: '#080808',
-        'bg-2': '#0f0f0f',
-        'bg-3': '#161616',
+        bg: '#ffffff',
+        'bg-2': '#f8f8f8',
+        'bg-3': '#f0f0f0',
         red: {
-          main: '#CC0000',
-          bright: '#FF2020',
-          muted: '#7a0000',
-          glow: 'rgba(204,0,0,0.4)',
+          main: '#E8000A',
+          bright: '#FF0010',
+          muted: '#c00008',
+          glow: 'rgba(232,0,10,0.3)',
         },
         text: {
-          primary: '#E8E8E8',
-          secondary: '#888888',
-          muted: '#444444',
+          primary: '#111111',
+          secondary: '#555555',
+          muted: '#aaaaaa',
         },
-        border: '#1e1e1e',
+        border: '#e5e5e5',
       },
       fontFamily: {
         display: ['var(--font-bebas)', 'sans-serif'],
