@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import { Product, Filters, Lang } from '@/types'
+import { Product, Filters, Lang, Category } from '@/types'
 import { t } from '@/i18n'
 import { getProducts } from '@/lib/api'
 import { ProductCard } from './ProductCard'
@@ -9,7 +9,7 @@ import { ProductDetailModal } from './ProductDetailModal'
 import { CategoryBar } from './CategoryBar'
 import { FilterModal } from './FilterModal'
 
-type CatOption = 'ALL' | 'PANTS' | 'BAGS' | 'JACKETS' | 'HOODIES'
+type CatOption = Category | 'ALL'
 
 const DEFAULT_FILTERS: Filters = {
   clothingSizes: [],
