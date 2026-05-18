@@ -55,7 +55,7 @@ export function CatalogTab({ lang, telegramId, favIds, onToggleFav }: Props) {
         active={category}
         lang={lang}
         onFiltersClick={() => setShowFilters(true)}
-        onCategoryChange={setCategory}
+        onCategoryChange={(cat) => setCategory(cat)}
       />
 
       {/* Active filter indicator */}
