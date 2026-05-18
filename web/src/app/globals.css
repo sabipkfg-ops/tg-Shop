@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 :root {
-  --font-bebas: 'Bebas Neue';
+  --font-bebas: 'Bell MT', Georgia, 'Times New Roman', serif;
   --font-space-mono: 'Space Mono';
   --font-inter: 'Inter';
 }
@@ -17,8 +17,8 @@
 
 html,
 body {
-  background: #080808;
-  color: #e8e8e8;
+  background: #ffffff;
+  color: #111111;
   font-family: var(--font-inter), sans-serif;
   overflow: hidden;
   height: 100%;
@@ -37,7 +37,7 @@ body::before {
   inset: 0;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.045;
+  opacity: 0.018;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 256px;
 }
@@ -63,32 +63,32 @@ body::after {
   width: 3px;
   height: 3px;
 }
-::-webkit-scrollbar-track { background: #0f0f0f; }
-::-webkit-scrollbar-thumb { background: #cc0000; border-radius: 2px; }
+::-webkit-scrollbar-track { background: #f8f8f8; }
+::-webkit-scrollbar-thumb { background: #E8000A; border-radius: 2px; }
 
 /* ─── Typography helpers ────────────────────────────────────── */
-.font-display { font-family: var(--font-bebas), sans-serif; }
+.font-display { font-family: var(--font-bebas); }
 .font-mono    { font-family: var(--font-space-mono), monospace; }
 
 /* ─── Price glow ────────────────────────────────────────────── */
 .price-text {
   font-family: var(--font-space-mono), monospace;
-  color: #cc0000;
-  text-shadow: 0 0 10px rgba(204, 0, 0, 0.5);
+  color: #E8000A;
+  text-shadow: 0 0 8px rgba(232, 0, 10, 0.18);
 }
 
 /* ─── Red glow button ───────────────────────────────────────── */
 .btn-red {
-  background: #cc0000;
+  background: #E8000A;
   color: #fff;
-  font-family: var(--font-bebas), sans-serif;
+  font-family: var(--font-bebas);
   letter-spacing: 0.12em;
   font-size: 1.1rem;
   transition: background 0.15s, box-shadow 0.15s;
 }
 .btn-red:active {
-  background: #aa0000;
-  box-shadow: 0 0 18px rgba(204, 0, 0, 0.6);
+  background: #c00008;
+  box-shadow: 0 0 18px rgba(232, 0, 10, 0.28);
 }
 
 /* ─── Glitch hover card ─────────────────────────────────────── */
@@ -100,11 +100,12 @@ body::after {
   content: '';
   position: absolute;
   inset: 0;
+  pointer-events: none;
   background: linear-gradient(
     135deg,
-    rgba(204, 0, 0, 0) 0%,
-    rgba(204, 0, 0, 0.06) 50%,
-    rgba(204, 0, 0, 0) 100%
+    rgba(232, 0, 10, 0) 0%,
+    rgba(232, 0, 10, 0.08) 50%,
+    rgba(232, 0, 10, 0) 100%
   );
   opacity: 0;
   transition: opacity 0.2s;
@@ -113,31 +114,31 @@ body::after {
 
 /* ─── Distressed border ─────────────────────────────────────── */
 .border-distress {
-  border: 1px solid #1e1e1e;
-  box-shadow: inset 0 0 0 1px rgba(204, 0, 0, 0.04);
+  border: 1px solid #e5e5e5;
+  box-shadow: inset 0 0 0 1px rgba(232, 0, 10, 0.04);
 }
 
 /* ─── Size badge ────────────────────────────────────────────── */
 .size-badge {
-  border: 1px solid #2a2a2a;
-  color: #888;
+  border: 1px solid #d9d9d9;
+  color: #555;
   font-family: var(--font-space-mono), monospace;
   font-size: 0.7rem;
   transition: border-color 0.15s, color 0.15s, background 0.15s;
 }
 .size-badge.selected {
-  border-color: #cc0000;
-  color: #e8e8e8;
-  background: rgba(204, 0, 0, 0.15);
+  border-color: #E8000A;
+  color: #111111;
+  background: rgba(232, 0, 10, 0.08);
 }
 
 /* ─── Category chip active ──────────────────────────────────── */
 .cat-chip {
-  font-family: var(--font-bebas), sans-serif;
+  font-family: var(--font-bebas);
   letter-spacing: 0.1em;
   transition: color 0.15s, border-color 0.15s;
 }
 .cat-chip.active {
-  color: #cc0000;
-  border-bottom: 2px solid #cc0000;
+  color: #E8000A;
+  border-bottom: 2px solid #E8000A;
 }

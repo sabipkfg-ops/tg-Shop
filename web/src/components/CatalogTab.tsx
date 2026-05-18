@@ -92,6 +92,7 @@ export function CatalogTab({ lang, telegramId, favIds, onToggleFav }: Props) {
                 product={p}
                 lang={lang}
                 isFav={favIds.has(p.id)}
+                onToggleFav={telegramId ? () => onToggleFav(p) : undefined}
                 onClick={() => setSelected(p)}
               />
             ))}

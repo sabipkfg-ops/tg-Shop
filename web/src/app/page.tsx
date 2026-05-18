@@ -24,7 +24,7 @@ export default function App() {
     return (
       <div className="flex items-center justify-center h-screen bg-bg">
         <span className="font-display text-3xl tracking-widest text-red-main animate-pulse">
-          DRIP STORE
+          BIIRZHA
         </span>
       </div>
     )
@@ -35,7 +35,7 @@ export default function App() {
       {/* Top bar */}
       <header className="flex items-center justify-between px-4 py-2 border-b border-border bg-bg-2 shrink-0">
         <span className="font-display text-2xl tracking-widest text-text-primary">
-          DRIP<span className="text-red-main">.</span>STORE
+          BIIRZHA
         </span>
         {/* Language switcher */}
         <button

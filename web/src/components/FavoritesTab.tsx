@@ -52,6 +52,7 @@ export function FavoritesTab({
                 product={p}
                 lang={lang}
                 isFav={true}
+                onToggleFav={telegramId ? () => onToggleFav(p) : undefined}
                 onClick={() => setSelected(p)}
               />
             ))}

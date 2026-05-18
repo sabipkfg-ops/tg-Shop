@@ -21,7 +21,7 @@ export function ProductDetailModal({
   onToggleFav,
   onClose,
 }: Props) {
-  const name = lang === 'ru' ? product.nameRu : product.nameEn
+  const name = product.name
 
   const handleWrite = () => {
     window.Telegram?.WebApp?.openTelegramLink(`https://t.me/${SELLER}`)
