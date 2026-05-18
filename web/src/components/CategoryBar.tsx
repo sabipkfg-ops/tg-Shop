@@ -6,7 +6,7 @@ import { t } from '@/i18n'
 
 type CatOption = Category | 'ALL'
  
-const CATEGORIES: CatOption[] = ['ALL', 'PANTS', 'BAGS', 'JACKETS', 'HOODIES']
+const CATEGORIES: CatOption[] = ['ALL', 'PANTS', 'BAGS', 'JACKETS', 'HOODIES', 'TEES']
  
 interface Props {
   active: CatOption
@@ -22,6 +22,7 @@ function catLabel(lang: Lang, cat: CatOption): string {
     BAGS: t(lang, 'bags'),
     JACKETS: t(lang, 'jackets'),
     HOODIES: t(lang, 'hoodies'),
+    TEES: t(lang, 'tees'),
   }
   return map[cat]
 }
