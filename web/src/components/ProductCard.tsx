@@ -21,7 +21,7 @@ export function ProductCard({ product, lang, isFav, onClick }: Props) {
       <div className="relative w-full aspect-[3/4] overflow-hidden bg-bg-3">
         <Image
           src={product.photoUrl}
-          alt={lang === 'ru' ? product.nameRu : product.nameEn}
+          alt={product.name}
           fill
           className="object-cover"
           sizes="(max-width: 768px) 50vw, 33vw"
@@ -40,7 +40,7 @@ export function ProductCard({ product, lang, isFav, onClick }: Props) {
           {product.price.toLocaleString('ru-RU')}₽
         </p>
         <p className="text-text-primary text-sm mt-0.5 leading-snug line-clamp-2 font-display tracking-wide">
-          {lang === 'ru' ? product.nameRu : product.nameEn}
+          {lang === 'ru' ? product.name : product.name}
         </p>
       </div>
     </button>
