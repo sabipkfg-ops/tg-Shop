@@ -62,7 +62,10 @@ function buildCategoryKeyboard() {
       Markup.button.callback('🧥 Куртки', 'cat:JACKETS'),
       Markup.button.callback('🤙 Худи/Зипки', 'cat:HOODIES'),
     ],
-    [Markup.button.callback('👕 Футболки', 'cat:TEES')],
+    [
+      Markup.button.callback('👕 Футболки', 'cat:TEES'),
+      Markup.button.callback('👟 Обувь', 'cat:SHOES'),
+    ],
   ])
 }
 

@@ -25,6 +25,7 @@ enum Category {
   JACKETS
   HOODIES
   TEES
+  SHOES
 }
 
 model Favorite {

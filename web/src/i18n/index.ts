@@ -10,6 +10,7 @@ const translations = {
     jackets: 'Куртки',
     hoodies: 'Худи/Зипки',
     tees: 'Футболки',
+    shoes: 'Обувь',
     filters: 'Фильтры',
     write: 'Написать',
     clothingSize: 'Размер одежды',
@@ -27,6 +28,7 @@ const translations = {
     category_JACKETS: 'Куртки',
     category_HOODIES: 'Худи / Зипки',
     category_TEES: 'Футболки',
+    category_SHOES: 'Обувь',
   },
   en: {
     catalog: 'Catalog',
@@ -37,6 +39,7 @@ const translations = {
     jackets: 'Jackets',
     hoodies: 'Hoodies',
     tees: 'Tees',
+    shoes: 'Shoes',
     filters: 'Filters',
     write: 'Message',
     clothingSize: 'Clothing size',
@@ -54,6 +57,7 @@ const translations = {
     category_JACKETS: 'Jackets',
     category_HOODIES: 'Hoodies / Zips',
     category_TEES: 'Tees',
+    category_SHOES: 'Shoes',
   },
 } as const
 
