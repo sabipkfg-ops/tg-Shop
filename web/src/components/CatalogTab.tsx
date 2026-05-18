@@ -58,28 +58,26 @@ export function CatalogTab({ lang, telegramId, favIds, onToggleFav }: Props) {
         onCategoryChange={(cat) => setCategory(cat)}
       />
 
-      {/* Active filter indicator */}
       {hasActiveFilters && (
-        <div className="px-4 py-1.5 bg-red-main/10 border-b border-red-muted/30 flex items-center gap-2">
+        <div className="web2000-strip px-4 py-1.5 bg-red-main/10 border-b border-red-muted/30 flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-red-main animate-pulse-red" />
           <span className="text-red-main text-xs font-mono uppercase tracking-widest">
-            {[...filters.clothingSizes, ...filters.shoeSizes].join(' · ')}
+            {[...filters.clothingSizes, ...filters.shoeSizes].join(' / ')}
           </span>
           <button
             onClick={() => setFilters(DEFAULT_FILTERS)}
             className="ml-auto text-text-muted text-xs"
           >
-            ✕
+            [x]
           </button>
         </div>
       )}
 
-      {/* Grid */}
-      <div className="flex-1 overflow-y-auto p-2">
+      <div className="flex-1 overflow-y-auto p-2 web2000-content">
         {loading ? (
           <ProductSkeleton />
         ) : products.length === 0 ? (
-          <div className="flex items-center justify-center h-40">
+          <div className="web2000-panel flex items-center justify-center h-40">
             <p className="text-text-muted font-mono uppercase text-sm tracking-widest">
               {t(lang, 'emptyCatalog')}
             </p>
@@ -100,7 +98,6 @@ export function CatalogTab({ lang, telegramId, favIds, onToggleFav }: Props) {
         )}
       </div>
 
-      {/* Detail Modal */}
       {selected && (
         <ProductDetailModal
           product={selected}
@@ -111,7 +108,6 @@ export function CatalogTab({ lang, telegramId, favIds, onToggleFav }: Props) {
         />
       )}
 
-      {/* Filter Modal */}
       {showFilters && (
         <FilterModal
           initial={filters}

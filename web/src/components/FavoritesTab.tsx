@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { Product, Lang } from '@/types'
 import { t } from '@/i18n'
 import { ProductCard } from './ProductCard'
@@ -25,9 +26,15 @@ export function FavoritesTab({
 
   return (
     <div className="flex flex-col flex-1 min-h-0">
-      {/* Header */}
-      <div className="px-4 py-3 border-b border-border bg-bg-2 flex items-center gap-2">
-        <span className="text-red-main">♥</span>
+      <div className="web2000-strip px-4 py-3 border-b border-border bg-bg-2 flex items-center gap-2">
+        <Image
+          src="/assets/favorite-filled.svg"
+          alt=""
+          width={22}
+          height={28}
+          className="favorite-icon header-favorite-icon"
+          unoptimized
+        />
         <h2 className="font-display text-lg tracking-widest uppercase text-text-primary">
           {t(lang, 'favorites')}
         </h2>
@@ -38,8 +45,15 @@ export function FavoritesTab({
 
       <div className="flex-1 overflow-y-auto p-2">
         {products.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-48 gap-3">
-            <span className="text-4xl text-border">♡</span>
+          <div className="web2000-panel flex flex-col items-center justify-center h-48 gap-3">
+            <Image
+              src="/assets/favorite-outline.svg"
+              alt=""
+              width={46}
+              height={56}
+              className="favorite-icon empty-favorite-icon"
+              unoptimized
+            />
             <p className="text-text-muted font-mono uppercase text-sm tracking-widest">
               {t(lang, 'emptyFavorites')}
             </p>

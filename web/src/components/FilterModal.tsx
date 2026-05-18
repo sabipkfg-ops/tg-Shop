@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Filters, SortOrder, Lang} from '@/types'
+import { Filters, SortOrder, Lang } from '@/types'
 import { t } from '@/i18n'
 
 interface Props {
@@ -13,6 +13,7 @@ interface Props {
 
 const CLOTHING = ['XS', 'S', 'M', 'L', 'XL']
 const SHOES = Array.from({ length: 10 }, (_, i) => String(36 + i))
+const PANTS = ['42', '44', '46', '48', '50', '52']
 
 function toggle(arr: string[], val: string): string[] {
   return arr.includes(val) ? arr.filter((v) => v !== val) : [...arr, val]
@@ -43,7 +44,7 @@ export function FilterModal({ initial, lang, onApply, onClose }: Props) {
       />
 
       {/* Sheet */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 bg-bg-2 border-t border-border rounded-t-lg animate-slide-up pb-safe">
+      <div className="web2000-panel fixed bottom-0 left-0 right-0 z-50 bg-bg-2 border-t border-border rounded-t-lg animate-slide-up pb-safe">
         {/* Handle */}
         <div className="flex justify-center pt-3 pb-1">
           <div className="w-10 h-1 bg-border rounded-full" />
@@ -67,6 +68,20 @@ export function FilterModal({ initial, lang, onApply, onClose }: Props) {
           <Section label={t(lang, 'clothingSize')}>
             <div className="flex flex-wrap gap-2">
               {CLOTHING.map((s) => (
+                <SizeBtn
+                  key={s}
+                  size={s}
+                  selected={clothing.includes(s)}
+                  onToggle={() => setClothing((p) => toggle(p, s))}
+                />
+              ))}
+            </div>
+          </Section>
+
+          {/* Pants sizes */}
+          <Section label={t(lang, 'pantsSize')}>
+            <div className="flex flex-wrap gap-2">
+              {PANTS.map((s) => (
                 <SizeBtn
                   key={s}
                   size={s}

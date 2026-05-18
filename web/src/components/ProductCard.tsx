@@ -13,7 +13,7 @@ interface Props {
 
 export function ProductCard({ product, isFav, onClick, onToggleFav }: Props) {
   return (
-    <div className="glitch-card border-distress rounded-sm bg-bg-2 w-full text-left relative">
+    <div className="web2000-card glitch-card border-distress rounded-sm bg-bg-2 w-full text-left relative">
       <button
         type="button"
         onClick={onClick}
@@ -47,12 +47,17 @@ export function ProductCard({ product, isFav, onClick, onToggleFav }: Props) {
           e.stopPropagation()
           onToggleFav?.()
         }}
-        className={`absolute top-2 right-2 z-10 w-9 h-9 rounded-full border border-border bg-bg/90 text-xl leading-none flex items-center justify-center shadow-sm transition-colors ${
-          isFav ? 'text-red-main' : 'text-text-secondary'
-        } disabled:opacity-50`}
+        className="favorite-button absolute top-2 right-2 z-10 w-10 h-10 flex items-center justify-center disabled:opacity-50"
         aria-label="Toggle favorite"
       >
-        {isFav ? '\u2665' : '\u2661'}
+        <Image
+          src={isFav ? '/assets/favorite-filled.svg' : '/assets/favorite-outline.svg'}
+          alt=""
+          width={26}
+          height={32}
+          className="favorite-icon"
+          unoptimized
+        />
       </button>
     </div>
   )

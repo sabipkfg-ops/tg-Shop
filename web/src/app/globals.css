@@ -142,3 +142,112 @@ body::after {
   color: #E8000A;
   border-bottom: 2px solid #E8000A;
 }
+
+/* 2000s web page skin */
+.web2000-page {
+  background-color: #ffe8c8;
+  background-image:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.42) 0 12px, rgba(255, 118, 170, 0.14) 12px 24px),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.34) 0 42px, rgba(255, 196, 70, 0.22) 42px 46px),
+    linear-gradient(135deg, rgba(255, 245, 150, 0.65), rgba(255, 180, 220, 0.5) 48%, rgba(160, 230, 255, 0.45));
+}
+
+.web2000-header {
+  border: 3px double #0047ff;
+  background: linear-gradient(90deg, #fff8a8 0%, #ffc4d6 46%, #ffffff 100%);
+  box-shadow: inset 0 0 0 2px #ffffff, 0 2px 0 #ff0000;
+}
+
+.web2000-title {
+  color: #111111;
+  text-shadow: 2px 2px 0 #ff0000, 4px 4px 0 #ffffff;
+}
+
+.web2000-kicker {
+  color: #0000ee;
+  text-decoration: underline;
+}
+
+.web2000-marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  border-top: 2px solid #ff0000;
+  background: #ffff00;
+  color: #000000;
+}
+
+.web2000-marquee span {
+  display: inline-block;
+  min-width: 100%;
+  padding: 2px 0;
+  animation: web2000Marquee 12s linear infinite;
+}
+
+@keyframes web2000Marquee {
+  from { transform: translateX(100%); }
+  to { transform: translateX(-100%); }
+}
+
+.web2000-tabs,
+.web2000-nav,
+.web2000-strip {
+  background: #ffffff;
+  border-color: #ff0000;
+}
+
+.web2000-tab-button {
+  border-right: 2px dotted #8b008b;
+  background: linear-gradient(180deg, #ffffff 0%, #ffe7ef 100%);
+}
+
+.web2000-card,
+.web2000-panel {
+  border: 3px ridge #ff0000;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 4px 4px 0 #ffff00, 6px 6px 0 #0000ee;
+}
+
+.web2000-card:nth-child(2n) {
+  box-shadow: 4px 4px 0 #00ffff, 6px 6px 0 #ff0000;
+}
+
+.web2000-button {
+  border: 2px outset #d0d0d0;
+  background: #ffffff;
+  color: #0000ee;
+}
+
+.favorite-button {
+  border: 2px outset #d0d0d0;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 2px 2px 0 #ffff00;
+}
+
+.favorite-icon {
+  display: block;
+  width: 26px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.nav-favorite-icon {
+  width: 18px;
+  height: 22px;
+}
+
+.header-favorite-icon {
+  width: 22px;
+  height: 28px;
+}
+
+.empty-favorite-icon {
+  width: 46px;
+  height: 56px;
+}
+
+.web2000-catalog-icon {
+  color: #0000ee;
+  font-size: 18px;
+  line-height: 1;
+  text-shadow: 1px 1px 0 #ffff00;
+}
