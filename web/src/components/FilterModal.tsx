@@ -13,7 +13,11 @@ interface Props {
 
 const CLOTHING = ['XS', 'S', 'M', 'L', 'XL']
 const SHOES = Array.from({ length: 10 }, (_, i) => String(36 + i))
-const PANTS = ['42', '44', '46', '48', '50', '52']
+const PANTS = [
+  '28/30', '28/32', '30/30', '30/32', '30/34',
+  '32/30', '32/32', '32/34', '34/30', '34/32',
+  '34/34', '36/30', '36/32', '36/34', '38/32', '38/34',
+]
 
 function toggle(arr: string[], val: string): string[] {
   return arr.includes(val) ? arr.filter((v) => v !== val) : [...arr, val]

@@ -9,7 +9,11 @@ const ADMIN_IDS = (process.env.ADMIN_TELEGRAM_ID ?? '')
 
 const CLOTHING_SIZES = ['XS', 'S', 'M', 'L', 'XL']
 const SHOE_SIZES = Array.from({ length: 10 }, (_, i) => String(36 + i))
-const PANTS_SIZES = ['42', '44', '46', '48', '50', '52']
+const PANTS_SIZES = [
+  '28/30', '28/32', '30/30', '30/32', '30/34',
+  '32/30', '32/32', '32/34', '34/30', '34/32',
+  '34/34', '36/30', '36/32', '36/34', '38/32', '38/34',
+]
 
 function isAdmin(id: number) {
   return ADMIN_IDS.includes(id)
@@ -46,8 +50,10 @@ function buildSizesKeyboard(selected: string[]) {
     CLOTHING_SIZES.map(btn),
     SHOE_SIZES.slice(0, 5).map(btn),
     SHOE_SIZES.slice(5).map(btn),
-    PANTS_SIZES.slice(0, 3).map(btn),
-    PANTS_SIZES.slice(3).map(btn),
+    PANTS_SIZES.slice(0, 4).map(btn),
+    PANTS_SIZES.slice(4, 8).map(btn),
+    PANTS_SIZES.slice(8, 12).map(btn),
+    PANTS_SIZES.slice(12).map(btn),
     [Markup.button.callback('✅ Готово', 'sizes_done')],
   ])
 }

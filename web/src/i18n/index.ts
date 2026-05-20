@@ -37,7 +37,7 @@ const translations = {
     pants: 'Pants',
     bags: 'Bags',
     jackets: 'Jackets',
-    hoodies: 'Hoodies',
+    hoodies: 'Hoodies/Zip',
     tees: 'Tees',
     shoes: 'Shoes',
     filters: 'Filters',
