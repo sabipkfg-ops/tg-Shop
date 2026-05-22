@@ -29,7 +29,7 @@ export default function App() {
   return (
     <div className="flex flex-col h-screen bg-bg overflow-hidden">
       <header className="flex items-center justify-between px-4 py-3 border-b border-border bg-bg shrink-0">
-        <span className="text-white text-xl font-bold tracking-widest">GRAIL</span>
+        <span className="text-white text-2xl font-extrabold tracking-widest">GRAIL</span>
         <button
           onClick={() => setLang((l) => (l === 'ru' ? 'en' : 'ru'))}
           className="text-xs font-medium tracking-widest uppercase border border-border text-text-secondary px-2 py-1 rounded-lg transition-colors hover:border-white hover:text-white"
