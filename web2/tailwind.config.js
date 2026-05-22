@@ -4,21 +4,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        bg: '#111111',
-        'bg-2': '#1a1a1a',
-        'bg-3': '#222222',
+        bg: '#000000',
+        'bg-2': '#111111',
+        'bg-3': '#1a1a1a',
         text: {
           primary: '#ffffff',
-          secondary: '#888888',
+          secondary: '#999999',
           muted: '#444444',
         },
-        border: '#2a2a2a',
+        border: '#222222',
         accent: '#ffffff',
       },
       fontFamily: {
-        display: ['Inter', 'sans-serif'],
-        mono: ['Space Mono', 'monospace'],
-        sans: ['Inter', 'sans-serif'],
+        display: ['Poppins', 'sans-serif'],
+        mono: ['Poppins', 'sans-serif'],
+        sans: ['Poppins', 'sans-serif'],
       },
       borderRadius: {
         card: '16px',
