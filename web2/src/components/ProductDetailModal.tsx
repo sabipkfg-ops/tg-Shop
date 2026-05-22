@@ -1,8 +1,8 @@
 'use client'
 
 import Image from 'next/image'
-import { Product } from '@/types'
-import { Lang, t } from '@/i18n'
+import { Product, Lang } from '@/types'
+import { t } from '@/i18n'
 
 interface Props {
   product: Product
