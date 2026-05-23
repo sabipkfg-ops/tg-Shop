@@ -80,7 +80,7 @@ export function CatalogTab({ lang, telegramId, favIds, onToggleFav }: Props) {
                 product={p}
                 isFav={favIds.has(p.id)}
                 onClick={() => setSelected(p)}
-                onToggleFav={(e) => { e.stopPropagation(); telegramId && onToggleFav(p) }}
+                onToggleFav={(e: React.MouseEvent) => { e.stopPropagation(); telegramId && onToggleFav(p) }}
               />
             ))}
           </div>
