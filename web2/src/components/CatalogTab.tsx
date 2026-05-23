@@ -9,7 +9,7 @@ import { ProductDetailModal } from './ProductDetailModal'
 import { CategoryBar } from './CategoryBar'
 import { FilterModal } from './FilterModal'
 
-type CatOption = 'ALL' | 'PANTS' | 'BAGS' | 'JACKETS' | 'HOODIES' | 'TEES'
+type CatOption = 'ALL' | 'PANTS' | 'BAGS' | 'JACKETS' | 'HOODIES' | 'TEES' | 'SHOES'
 const DEFAULT_FILTERS: Filters = { clothingSizes: [], shoeSizes: [], sort: 'asc' }
 
 interface Props {
