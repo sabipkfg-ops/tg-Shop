@@ -21,18 +21,18 @@ export default function App() {
   if (!ready) {
     return (
       <div className="flex items-center justify-center h-screen bg-bg">
-        <span className="text-white text-3xl font-bold tracking-widest">GRAIL</span>
+        <span className="text-white text-4xl font-black tracking-widest">GRAIL</span>
       </div>
     )
   }
 
   return (
     <div className="flex flex-col h-screen bg-bg overflow-hidden">
-      <header className="flex items-center justify-between px-4 py-3 border-b border-border bg-bg shrink-0">
-        <span className="text-white text-2xl font-extrabold tracking-widest">GRAIL</span>
+      <header className="flex items-center justify-center relative px-4 py-4 border-b border-border bg-bg shrink-0">
+        <span className="text-white text-2xl font-black tracking-[0.3em]">GRAIL</span>
         <button
           onClick={() => setLang((l) => (l === 'ru' ? 'en' : 'ru'))}
-          className="text-xs font-medium tracking-widest uppercase border border-border text-text-secondary px-2 py-1 rounded-lg transition-colors hover:border-white hover:text-white"
+          className="absolute right-4 text-xs font-bold tracking-widest uppercase border border-border text-text-secondary px-2.5 py-1 rounded-lg transition-all hover:border-white hover:text-white"
         >
           {lang === 'ru' ? 'EN' : 'RU'}
         </button>

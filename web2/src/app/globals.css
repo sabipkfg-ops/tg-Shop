@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -20,13 +20,13 @@ html, body {
 
 #__next, main { height: 100%; }
 
-::-webkit-scrollbar { width: 3px; height: 3px; }
-::-webkit-scrollbar-track { background: #111; }
-::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 99px; }
 
 .price-text {
   font-family: 'Poppins', sans-serif;
-  font-weight: 700;
+  font-weight: 800;
   color: #ffffff;
 }
 
@@ -34,31 +34,34 @@ html, body {
   background: #ffffff;
   color: #000000;
   font-family: 'Poppins', sans-serif;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.95rem;
-  border-radius: 12px;
-  transition: opacity 0.15s;
+  border-radius: 14px;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.btn-primary:active { opacity: 0.85; }
+.btn-primary:active {
+  transform: scale(0.96);
+  opacity: 0.9;
+}
 
 .product-card {
   background: #111111;
-  border-radius: 16px;
+  border-radius: 20px;
   overflow: hidden;
-  transition: transform 0.1s;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.product-card:active { transform: scale(0.97); }
+.product-card:active { transform: scale(0.96); }
 
 .cat-pill {
   font-family: 'Poppins', sans-serif;
-  font-weight: 500;
-  font-size: 0.85rem;
-  padding: 6px 16px;
-  border-radius: 20px;
-  border: 1px solid #222;
-  color: #666;
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 7px 18px;
+  border-radius: 99px;
+  border: 1.5px solid #222;
+  color: #555;
   white-space: nowrap;
-  transition: all 0.15s;
+  transition: all 0.2s ease;
 }
 .cat-pill.active {
   background: #ffffff;
@@ -67,27 +70,28 @@ html, body {
 }
 
 .size-badge {
-  border: 1px solid #222;
-  color: #666;
+  border: 1.5px solid #222;
+  color: #555;
   font-family: 'Poppins', sans-serif;
-  font-size: 0.7rem;
-  border-radius: 8px;
-  transition: all 0.15s;
+  font-weight: 600;
+  font-size: 0.72rem;
+  border-radius: 10px;
+  transition: all 0.2s ease;
 }
 .size-badge.selected {
   border-color: #ffffff;
   color: #ffffff;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.08);
 }
 
 @keyframes slideUp {
-  from { transform: translateY(100%); }
-  to   { transform: translateY(0); }
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
 }
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from { opacity: 0; transform: scale(0.98); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
-.animate-slide-up { animation: slideUp 0.3s ease; }
+.animate-slide-up { animation: slideUp 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); }
 .animate-fade-in  { animation: fadeIn 0.25s ease; }
