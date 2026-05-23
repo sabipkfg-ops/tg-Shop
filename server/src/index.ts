@@ -8,32 +8,35 @@ import favoritesRouter from './api/favorites'
 const app = express()
 const PORT = process.env.PORT ?? 3001
 
-app.use(cors({ origin: process.env.FRONTEND_URL }))
+app.use(cors({
+  origin: [
+    process.env.FRONTEND_URL ?? '',
+    process.env.FRONTEND_URL_2 ?? '',
+  ]
+}))
 app.use(express.json())
 
-// API routes
 app.use('/api/products', productsRouter)
 app.use('/api/favorites', favoritesRouter)
-
 app.get('/health', (_, res) => res.json({ ok: true }))
 
-// Start bot (long polling in dev, webhook in prod)
-const bot = createBot()
+// Bot 1 — BIIRZHA
+const bot1 = createBot(process.env.BOT_TOKEN!, process.env.FRONTEND_URL!)
+
+// Bot 2 — GRAIL
+const bot2 = createBot(process.env.BOT_TOKEN_2!, process.env.FRONTEND_URL_2!)
 
 if (process.env.NODE_ENV === 'production') {
-const webhookUrl = `${process.env.SERVER_URL}/bot`
-  app.use('/bot', express.json(), (req, res) => {
-    bot.handleUpdate(req.body, res)
-  })
-  bot.telegram.setWebhook(webhookUrl).then(() => {
-    console.log(`Webhook set: ${webhookUrl}`)
-  })
+  app.use('/bot', (req, res) => { bot1.handleUpdate(req.body, res) })
+  app.use('/bot2', (req, res) => { bot2.handleUpdate(req.body, res) })
+
+  bot1.telegram.setWebhook(`${process.env.SERVER_URL}/bot`)
+  bot2.telegram.setWebhook(`${process.env.SERVER_URL}/bot2`)
 } else {
-  bot.launch().then(() => console.log('Bot polling started'))
-  process.once('SIGINT', () => bot.stop('SIGINT'))
-  process.once('SIGTERM', () => bot.stop('SIGTERM'))
+  bot1.launch()
+  bot2.launch()
+  process.once('SIGINT', () => { bot1.stop(); bot2.stop() })
+  process.once('SIGTERM', () => { bot1.stop(); bot2.stop() })
 }
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
-})
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
