@@ -1,4 +1,4 @@
-export type Category = 'PANTS' | 'BAGS' | 'JACKETS' | 'HOODIES' | 'TEES'
+export type Category = 'PANTS' | 'BAGS' | 'JACKETS' | 'HOODIES' | 'TEES' | 'SHOES'
 
 export interface Product {
   id: number
