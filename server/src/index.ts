@@ -31,7 +31,12 @@ if (process.env.NODE_ENV === 'production') {
   app.use('/bot2', (req, res) => { bot2.handleUpdate(req.body, res) })
 
   bot1.telegram.setWebhook(`${process.env.SERVER_URL}/bot`)
+    .then(() => console.log('Bot1 webhook OK:', `${process.env.SERVER_URL}/bot`))
+    .catch((e: Error) => console.error('Bot1 webhook ERROR:', e.message))
+
   bot2.telegram.setWebhook(`${process.env.SERVER_URL}/bot2`)
+    .then(() => console.log('Bot2 webhook OK:', `${process.env.SERVER_URL}/bot2`))
+    .catch((e: Error) => console.error('Bot2 webhook ERROR:', e.message))
 } else {
   bot1.launch()
   bot2.launch()
