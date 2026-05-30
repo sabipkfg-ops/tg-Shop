@@ -90,7 +90,7 @@ function buildEditKeyboard(productId: number) {
   ])
 }
 
-export function setupAdminFlow(bot: Telegraf) {
+export function setupAdminFlow(bot: Telegraf, botKey: '1' | '2') {
   bot.command('add', async (ctx) => {
     if (!isAdmin(ctx.from.id)) return
     await updateSession(String(ctx.from.id), 'awaiting_name', {})
@@ -176,7 +176,7 @@ export function setupAdminFlow(bot: Telegraf) {
     const session = await getSession(String(ctx.from.id))
     const data = (session.data as Record<string, unknown>) ?? {}
     const photo = ctx.message.photo.at(-1)!
-    const photoUrl = storedPhotoFromFileId(photo.file_id)
+    const photoUrl = storedPhotoFromFileId(photo.file_id, botKey)
 
     if (session.step === 'edit_photo') {
       await prisma.product.update({ where: { id: Number(data.editId) }, data: { photoUrl } })

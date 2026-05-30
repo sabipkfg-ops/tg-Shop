@@ -6,7 +6,7 @@ const ADMIN_IDS = (process.env.ADMIN_TELEGRAM_ID ?? '')
   .map((id) => Number(id.trim()))
   .filter(Boolean)
 
-export function createBot(token: string, frontendUrl: string) {
+export function createBot(token: string, frontendUrl: string, botKey: '1' | '2') {
   const bot = new Telegraf(token)
 
   // Пустые команды для всех пользователей (никаких команд не видно)
@@ -36,6 +36,6 @@ export function createBot(token: string, frontendUrl: string) {
     })
   })
 
-  setupAdminFlow(bot)
+  setupAdminFlow(bot, botKey)
   return bot
 }

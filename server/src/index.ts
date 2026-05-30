@@ -4,6 +4,7 @@ import cors from 'cors'
 import { createBot } from './bot'
 import productsRouter from './api/products'
 import favoritesRouter from './api/favorites'
+import { checkTelegramBots } from './lib/productPhoto'
 
 const app = express()
 const PORT = process.env.PORT ?? 3001
@@ -19,12 +20,15 @@ app.use(express.json())
 app.use('/api/products', productsRouter)
 app.use('/api/favorites', favoritesRouter)
 app.get('/health', (_, res) => res.json({ ok: true }))
+app.get('/health/telegram', async (_, res) => {
+  res.json({ bots: await checkTelegramBots() })
+})
 
 // Bot 1 — BIIRZHA
-const bot1 = createBot(process.env.BOT_TOKEN!, process.env.FRONTEND_URL!)
+const bot1 = createBot(process.env.BOT_TOKEN!, process.env.FRONTEND_URL!, '1')
 
 // Bot 2 — GRAIL
-const bot2 = createBot(process.env.BOT_TOKEN_2!, process.env.FRONTEND_URL_2!)
+const bot2 = createBot(process.env.BOT_TOKEN_2!, process.env.FRONTEND_URL_2!, '2')
 
 if (process.env.NODE_ENV === 'production') {
   app.use('/bot', (req, res) => { bot1.handleUpdate(req.body, res) })
