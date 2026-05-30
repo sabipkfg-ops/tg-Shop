@@ -4,7 +4,8 @@ import cors from 'cors'
 import { createBot } from './bot'
 import productsRouter from './api/products'
 import favoritesRouter from './api/favorites'
-import { checkTelegramBots } from './lib/productPhoto'
+import { checkTelegramBots, describeStoredPhoto, tryDownloadStoredPhoto } from './lib/productPhoto'
+import { prisma } from './lib/prisma'
 
 const app = express()
 const PORT = process.env.PORT ?? 3001
@@ -22,6 +23,19 @@ app.use('/api/favorites', favoritesRouter)
 app.get('/health', (_, res) => res.json({ ok: true }))
 app.get('/health/telegram', async (_, res) => {
   res.json({ bots: await checkTelegramBots() })
+})
+app.get('/health/photos', async (_, res) => {
+  const sample = await prisma.product.findMany({ take: 3, orderBy: { id: 'desc' } })
+  const items = await Promise.all(
+    sample.map(async (p) => ({
+      id: p.id,
+      name: p.name,
+      storedType: describeStoredPhoto(p.photoUrl),
+      storedPreview: p.photoUrl.slice(0, 80),
+      downloadable: await tryDownloadStoredPhoto(p.photoUrl),
+    }))
+  )
+  res.json({ samples: items })
 })
 
 // Bot 1 — BIIRZHA

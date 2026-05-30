@@ -28,6 +28,19 @@ export function mapProductForClient<P extends { id: number }>(product: P): P & {
   return { ...product, photoUrl: publicProductPhotoUrl(product.id) }
 }
 
+export function describeStoredPhoto(stored: string): string {
+  if (!stored) return 'empty'
+  if (stored.includes('/api/products/') && stored.includes('/photo')) return 'proxy_url_in_db'
+  if (stored.startsWith(TG_PREFIX)) return 'telegram_file_id'
+  if (stored.includes('api.telegram.org/file/bot')) return 'telegram_url'
+  if (stored.includes('/')) return 'file_path'
+  return 'raw_file_id'
+}
+
+export async function tryDownloadStoredPhoto(stored: string): Promise<boolean> {
+  return (await downloadStoredPhoto(stored)) !== null
+}
+
 const TG_FETCH_HEADERS = { 'User-Agent': 'TgShop/1.0' }
 
 function pathVariants(filePath: string): string[] {
@@ -98,6 +111,16 @@ async function downloadStoredPhoto(stored: string): Promise<{ buffer: Buffer; co
   if (tgRef) {
     for (const token of tokensForBotKey(tgRef.botKey)) {
       const path = await getFilePath(token, tgRef.fileId)
+      if (path) filePaths.add(path)
+    }
+  } else if (
+    !stored.startsWith('http') &&
+    !stored.startsWith(TG_PREFIX) &&
+    stored.length > 10 &&
+    !stored.includes('/')
+  ) {
+    for (const token of tokens) {
+      const path = await getFilePath(token, stored)
       if (path) filePaths.add(path)
     }
   }

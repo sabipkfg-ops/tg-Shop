@@ -1,7 +1,12 @@
 import { Router, Request, Response } from 'express'
 import { Category } from '@prisma/client'
 import { prisma } from '../lib/prisma'
-import { mapProductForClient, sendProductPhoto } from '../lib/productPhoto'
+import {
+  describeStoredPhoto,
+  mapProductForClient,
+  sendProductPhoto,
+  tryDownloadStoredPhoto,
+} from '../lib/productPhoto'
 
 const router = Router()
 
@@ -40,6 +45,28 @@ router.get('/', async (req: Request, res: Response) => {
     })
 
     res.json(products.map(mapProductForClient))
+  } catch (e) {
+    console.error(e)
+    res.status(500).json({ error: 'Internal server error' })
+  }
+})
+
+// GET /api/products/:id/photo-debug
+router.get('/:id/photo-debug', async (req: Request, res: Response) => {
+  try {
+    const id = parseInt(req.params.id)
+    if (isNaN(id)) return res.status(400).json({ error: 'Invalid id' })
+
+    const product = await prisma.product.findUnique({ where: { id } })
+    if (!product) return res.status(404).json({ error: 'Not found' })
+
+    const stored = product.photoUrl
+    res.json({
+      id,
+      storedType: describeStoredPhoto(stored),
+      storedPreview: stored.slice(0, 120),
+      downloadable: await tryDownloadStoredPhoto(stored),
+    })
   } catch (e) {
     console.error(e)
     res.status(500).json({ error: 'Internal server error' })
