@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express'
 import { prisma } from '../lib/prisma'
+import { mapProductForClient } from '../lib/productPhoto'
 
 const router = Router()
 
@@ -12,7 +13,7 @@ router.get('/:telegramId', async (req: Request, res: Response) => {
       include: { product: true },
       orderBy: { createdAt: 'desc' },
     })
-    res.json(favorites.map((f) => f.product))
+    res.json(favorites.map((f) => mapProductForClient(f.product)))
   } catch (e) {
     console.error(e)
     res.status(500).json({ error: 'Internal server error' })

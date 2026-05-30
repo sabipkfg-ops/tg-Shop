@@ -20,13 +20,13 @@ export function ProductCard({ product, isFav, onClick, onToggleFav }: Props) {
         className="block w-full text-left active:scale-[0.97] transition-transform duration-100"
       >
         <div className="relative w-full aspect-[3/4] overflow-hidden bg-bg-3">
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src={product.photoUrl}
             alt={product.name}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 50vw, 33vw"
-            unoptimized
+            className="absolute inset-0 w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
           />
         </div>
 

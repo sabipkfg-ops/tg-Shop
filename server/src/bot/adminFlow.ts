@@ -1,6 +1,7 @@
 import { Telegraf, Markup } from 'telegraf'
 import { Category, Prisma } from '@prisma/client'
 import { prisma } from '../lib/prisma'
+import { storedPhotoFromFileId } from '../lib/productPhoto'
 
 const ADMIN_IDS = (process.env.ADMIN_TELEGRAM_ID ?? '')
   .split(',')
@@ -175,8 +176,7 @@ export function setupAdminFlow(bot: Telegraf) {
     const session = await getSession(String(ctx.from.id))
     const data = (session.data as Record<string, unknown>) ?? {}
     const photo = ctx.message.photo.at(-1)!
-    const file = await ctx.telegram.getFile(photo.file_id)
-    const photoUrl = `https://api.telegram.org/file/bot${process.env.BOT_TOKEN}/${file.file_path}`
+    const photoUrl = storedPhotoFromFileId(photo.file_id)
 
     if (session.step === 'edit_photo') {
       await prisma.product.update({ where: { id: Number(data.editId) }, data: { photoUrl } })

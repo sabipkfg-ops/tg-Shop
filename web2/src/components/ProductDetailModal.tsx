@@ -30,7 +30,13 @@ export function ProductDetailModal({ product, lang, isFav, onToggleFav, onClose 
 
       <div className="flex-1 overflow-y-auto pb-6">
         <div className="relative w-full aspect-[3/4] bg-bg-3">
-          <Image src={product.photoUrl} alt={product.name} fill className="object-cover" unoptimized priority />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={product.photoUrl}
+            alt={product.name}
+            className="absolute inset-0 w-full h-full object-cover"
+            decoding="async"
+          />
         </div>
 
         <div className="px-4 pt-4">

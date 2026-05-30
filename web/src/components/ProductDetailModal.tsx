@@ -40,13 +40,12 @@ export function ProductDetailModal({
 
       <div className="flex-1 overflow-y-auto pb-6">
         <div className="relative w-full aspect-[3/4] bg-bg-3 web2000-panel">
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src={product.photoUrl}
             alt={product.name}
-            fill
-            className="object-cover"
-            unoptimized
-            priority
+            className="absolute inset-0 w-full h-full object-cover"
+            decoding="async"
           />
         </div>
 

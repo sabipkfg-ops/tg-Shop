@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express'
 import { Category } from '@prisma/client'
 import { prisma } from '../lib/prisma'
+import { mapProductForClient, sendProductPhoto } from '../lib/productPhoto'
 
 const router = Router()
 
@@ -38,7 +39,24 @@ router.get('/', async (req: Request, res: Response) => {
       },
     })
 
-    res.json(products)
+    res.json(products.map(mapProductForClient))
+  } catch (e) {
+    console.error(e)
+    res.status(500).json({ error: 'Internal server error' })
+  }
+})
+
+// GET /api/products/:id/photo
+router.get('/:id/photo', async (req: Request, res: Response) => {
+  try {
+    const id = parseInt(req.params.id)
+    if (isNaN(id)) return res.status(400).json({ error: 'Invalid id' })
+
+    const product = await prisma.product.findUnique({ where: { id } })
+    if (!product) return res.status(404).json({ error: 'Not found' })
+
+    const sent = await sendProductPhoto(product.photoUrl, res)
+    if (!sent) return res.status(404).json({ error: 'Photo not found' })
   } catch (e) {
     console.error(e)
     res.status(500).json({ error: 'Internal server error' })
@@ -54,7 +72,7 @@ router.get('/:id', async (req: Request, res: Response) => {
     const product = await prisma.product.findUnique({ where: { id } })
     if (!product) return res.status(404).json({ error: 'Not found' })
 
-    res.json(product)
+    res.json(mapProductForClient(product))
   } catch (e) {
     console.error(e)
     res.status(500).json({ error: 'Internal server error' })
